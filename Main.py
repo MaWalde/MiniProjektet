@@ -2,14 +2,16 @@ import nltk_setup
 from nltk.corpus import wordnet
 import tkinter
 
-def getSynonyms(ord):
+def getSynonyms():
+    ord = intext.get()
     synonymer = []
     for syn in wordnet.synsets(ord):
         for lemma in syn.lemmas():
             synonymer.append(lemma.name())
     return synonymer
 
-def getDefinition(ord):
+def getDefinition():
+    ord = intext.get()
     definition = wordnet.synsets(ord)
     if definition:
         return definition[0].definition()
