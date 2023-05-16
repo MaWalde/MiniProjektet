@@ -8,6 +8,14 @@ def listaSynonymer(ord):
             synonymer.append(lemma.name())
     return synonymer
 
+def getDefinition(ord):
+    definition = wordnet.synsets(ord)
+    if definition:
+        return definition[0].definition()
+    else:
+        return "Can not find a definition for the given word."
+
 ordet = "sport"
 synonymer = listaSynonymer(ordet)
-print(f"{synonymer}")
+definitionen = getDefinition(ordet)
+print(f"{synonymer} {definitionen}")
