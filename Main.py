@@ -8,15 +8,15 @@ def getSynonyms():
     for syn in wordnet.synsets(ord):
         for lemma in syn.lemmas():
             synonymer.append(lemma.name())
-    return synonymer
+    resultat.config(text="Synonyms: " + ", ".join(synonymer))
 
 def getDefinition():
     ord = intext.get()
     definition = wordnet.synsets(ord)
     if definition:
-        return definition[0].definition()
+        resultat.config(text="Definition: " + definition[0].definition())
     else:
-        return "Can not find a definition for the given word."
+        resultat.config(text="Can not find a definition for the given word.")
 
 # ordet = "sport"
 # synonymer = listaSynonymer(ordet)
