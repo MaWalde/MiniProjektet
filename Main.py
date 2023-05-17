@@ -25,6 +25,7 @@ def getDefinition():
 
 fönster = tkinter.Tk()
 fönster.title("Lexicon")
+fönster.geometry("500x300")
 etikett = tkinter.Label(fönster, text="Enter a word:")
 etikett.pack()
 intext = tkinter.Entry(fönster)
