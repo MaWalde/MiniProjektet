@@ -1,6 +1,6 @@
 import nltk_setup
 from nltk.corpus import wordnet
-import tkinter
+from tkinter import *
 
 def getSynonyms():
     ord = intext.get()
@@ -18,22 +18,30 @@ def getDefinition():
     else:
         resultat.config(text="Can not find a definition for the given word.")
 
+def startWin():
+    start = Toplevel(fönster)
+    start.geometry("200x200")
+    label = Label(start, text="Experiment")
+    label.pack()
+
 # ordet = "sport"
 # synonymer = listaSynonymer(ordet)
 # definitionen = getDefinition(ordet)
 # print(f"{synonymer} {definitionen}")
 
-fönster = tkinter.Tk()
+fönster = Tk()
 fönster.title("Lexicon")
 fönster.geometry("500x300")
-etikett = tkinter.Label(fönster, text="Enter a word:")
+etikett = Label(fönster, text="Enter a word:")
 etikett.pack()
-intext = tkinter.Entry(fönster)
+intext = Entry(fönster)
 intext.pack()
-knapp = tkinter.Button(fönster, text="Get synonyms", command=getSynonyms)
+knapp = Button(fönster, text="Get synonyms", command=getSynonyms)
 knapp.pack()
-knapp2 = tkinter.Button(fönster, text="Get definition", command=getDefinition)
+knapp2 = Button(fönster, text="Get definition", command=getDefinition)
 knapp2.pack()
-resultat = tkinter.Label(fönster, text=" ")
+resultat = Label(fönster, text=" ")
 resultat.pack()
+knapp2 = Button(fönster, text="Öppna", command=startWin)
+knapp2.place(x=75,y=50)
 fönster.mainloop()
