@@ -24,10 +24,16 @@ def startWin():
     label = Label(start, text="Experiment")
     label.pack()
 
-# ordet = "sport"
-# synonymer = listaSynonymer(ordet)
-# definitionen = getDefinition(ordet)
-# print(f"{synonymer} {definitionen}")
+def splash_screen_stäng():
+    splash_screen.destroy()
+
+splash_screen = Tk()
+splash_screen.title("Logotype")
+splash_img = PhotoImage(file="LeAl-logotyp.png")
+splash_label = Label(splash_screen, image=splash_img)
+splash_label.pack()
+splash_screen.after(3000, splash_screen_stäng())
+splash_screen.mainloop
 
 fönster = Tk()
 fönster.title("Lexicon")
