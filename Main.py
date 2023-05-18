@@ -1,6 +1,16 @@
 import nltk_setup
 from nltk.corpus import wordnet
 from tkinter import *
+from tkinter import ttk
+
+dark_mode = {".": {"configure": {"background": "#2d2d2d", "foreground": "white",}},
+             "Tlabel":{"configure":{"foreground": "white",}},
+             "Tbutton":{"configure":{"background":"#3c3f41","foreground":"white",}},}
+
+tema = ttk.Style()
+tema.theme_create('dark', parent="clam", settings=dark_mode)
+tema.theme_use('dark')
+
 
 def getSynonyms():
     ord = fönster.intext.get()
