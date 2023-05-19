@@ -5,7 +5,18 @@ from tkinter import ttk
 
 dark_mode = {".": {"configure": {"background": "#2d2d2d", "foreground": "white",}},
              "Tlabel":{"configure":{"foreground": "white",}},
-             "Tbutton":{"configure":{"background":"#3c3f41","foreground":"white",}},}
+             "Tbutton":{"configure":{"background":"#3c3f41","foreground":"white",}},
+             "TEntry": {"configure": {"background": "#2d2d2d", "foreground": "white",
+                        "fieldbackground" : "#4d4d4d", "insertcolor": "white",
+                        "bordercolor" : "black", "lightcolor" : "#4d4d4d",
+                        "darkcolor" : "black",}},
+             "TCheckbutton": {"configure": {"foreground": "white", "indicatorbackground" : "white", 
+                              "indicatorforeground" : "black",}},
+             "TCombobox": {"configure": {"background": "#2d2d2d", "foreground": "white",
+                                         "fieldbackground" : "#4d4d4d", "insertcolor": "white",
+                                         "bordercolor" : "black", "lightcolor" : "#4d4d4d",
+                                         "darkcolor" : "black", "arrowcolor" : "white"},},
+             }
 
 tema = ttk.Style()
 tema.theme_create('dark', parent="clam", settings=dark_mode)
@@ -53,7 +64,7 @@ def startWin():
 
 splash_screen = Toplevel()
 splash_screen.title("Logotype")
-splash_screen.geometry("961x610")
+splash_screen.geometry("961x615")
 style = ttk.Style()
 style.configure("TSplashScreen.TLabel", background="#2d2d2d")
 style.configure("TSplashScreen.TLabel.image", background="#2d2d2d")
