@@ -1,6 +1,7 @@
 import nltk_setup
 from nltk.corpus import wordnet
 from tkinter import *
+from tkinter import font
 # from tkinter import ttk
 
 # dark_mode = {".": {"configure": {"background": "#2d2d2d", "foreground": "white",}},
@@ -44,31 +45,44 @@ def splash_screen_stäng(event=None):
 
 def startWin():
     global fönster
-    global splash_img
     fönster = Tk()
-    fönster.protocol("WM_DELETE_WINDOW", fönster.quit)
+    #fönster.protocol("WM_DELETE_WINDOW", fönster.quit)
     fönster.title("Lexicon")
-    fönster.geometry("800x500")
+    fönster.maxsize(800,500)
+    fönster.config(bg="skyblue") #Prototyp bg-färg
     #etikett = ttk.Label(fönster, text="Enter a word:")
-    etikett = Label(fönster, text="Enter a word:")
-    etikett.pack()
+    l_frame = Frame(fönster, width=200, height=480, bg="white", bd = 13)
+    l_frame.grid(row=1,column=0, padx=20,pady=20)
+    etikett = Label(l_frame, text="Enter a word:")
+    fet_font = font.Font(weight="bold")
+    etikett.config(fg="blue", bg="skyblue",font=fet_font)
+    etikett.grid(row=1,column=1,padx=10,pady=5)
     #fönster.intext = ttk.Entry(fönster)
-    fönster.intext = Entry(fönster)
-    fönster.intext.pack()
+    fönster.intext = Entry(l_frame)
+    fönster.intext.config(font=fet_font)
+    fönster.intext.grid(row=1,column=3,padx=10,pady=5)
     #knapp = ttk.Button(fönster, text="Get synonyms", command=getSynonyms)
-    knapp = Button(fönster, text="Get synonyms", command=getSynonyms)
-    knapp.pack()
+    knapp = Button(l_frame, text="Get synonyms", command=getSynonyms)
+    knapp_font = font.Font(weight="bold", size=11)
+    knapp.config(bg="skyblue", fg="blue", font=knapp_font, activebackground="gold")
+    knapp.grid(row=3,column=1,padx=10,pady=10)
     #knapp2 = ttk.Button(fönster, text="Get definition", command=getDefinition)
-    knapp2 = Button(fönster, text="Get definition", command=getDefinition)
-    knapp2.pack()
+    knapp2 = Button(l_frame, text="Get definition", command=getDefinition)
+    knapp2.config(bg="skyblue", fg="blue", font=knapp_font, activebackground="gold")
+    knapp2.grid(row=3,column=3,padx=10,pady=10)
     #fönster.resultat = ttk.Label(fönster, text=" ")
-    fönster.resultat = Label(fönster, text=" ")
-    fönster.resultat.pack()
+    bd_frame = Frame(fönster,width=180,height=250, bg="black",bd=1)
+    bd_frame.grid(row=5,column=0,padx=10,pady=5)
+    frame_res = Frame(bd_frame, width=180,height=250,bg="white",bd=5)
+    frame_res.grid(row=5,column=0,padx=1,pady=1)
+    fönster.resultat = Label(frame_res, text=" ")
+    fönster.resultat.config(bg="skyblue", fg="blue", font=knapp_font)
+    fönster.resultat.grid(row=1,column=0,padx=10,pady=10)
     #fönster.mainloop()
 
 splash_screen = Tk()
 splash_screen.title("Logotype")
-splash_screen.geometry("961x615")
+splash_screen.geometry("957x623")
 # style = ttk.Style()
 # style.configure("TSplashScreen.TLabel", background="#2d2d2d")
 # style.configure("TSplashScreen.TLabel.image", background="#2d2d2d")
