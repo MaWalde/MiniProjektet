@@ -22,6 +22,12 @@ def getDefinition():
 def getAutonyms():
     ord = fönster.intext.get()
     autonymer = []
+    synonymer = wordnet.synsets(ord)
+    for syn in synonymer:
+        for lemma in syn.lemmas():
+            if lemma.autonyms() and lemma.autonyms()[0].name == ord:
+                autonymer.append(lemma.name())
+    fönster.resultat.config(text="Autonyms: " + ", ".join(autonymer))
 
 def splash_screen_stäng(event=None):
     splash_screen.destroy()
