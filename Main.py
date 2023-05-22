@@ -43,8 +43,29 @@ def getWordClass():
     elif klass == "r":
         klass = "Adverb"
     else:
-        klass = "satellite word, not yet implemented"
-
+        for syn in synset:
+            for lemma in syn.lemmas():
+                synset_sat = wordnet.synsets(lemma.name())
+                for syn_sat in synset_sat:
+                    pos_sat = syn_sat.pos()
+                    if pos_sat != "s":
+                        klass = pos_sat
+                        break
+                if klass:
+                    break
+            if klass:
+                break
+        if klass:
+            if klass == "n":
+                klass = "Substantive"
+            elif klass == "v":
+                klass = "Verb"
+            elif klass == "a":
+                klass = "Adjective"
+            elif klass == "r":
+                klass = "Adverb"
+        else:
+            klass = "Unknown"            
     fönster.resultat.config(text="Word class: " + klass)
 
 def splash_screen_stäng(event=None):
@@ -54,7 +75,7 @@ def splash_screen_stäng(event=None):
 def startWin():
     global fönster
     fönster = Tk()
-    fönster.title("Lexicon")
+    fönster.title("Mattias fantasticly spectacular english encyclopedia")
     fönster.maxsize(800,500)
     fönster.config(bg="skyblue") #Prototyp bg-färg
     l_frame = Frame(fönster, width=200, height=480, bg="white", bd = 13)
@@ -79,7 +100,7 @@ def startWin():
     knapp4 = Button(l_frame, text="Get class", command=getWordClass)
     knapp4.config(bg="skyblue", fg="blue", font=knapp_font, activebackground="gold")
     knapp4.grid(row=4,column=3,padx=10,pady=10)
-    bd_frame = Frame(fönster,width=180,height=250, bg="black",bd=1)
+    bd_frame = Frame(fönster,width=180,height=250, bg="white",bd=1)
     bd_frame.grid(row=5,column=0,padx=10,pady=5)
     frame_res = Frame(bd_frame, width=180,height=250,bg="white",bd=5)
     frame_res.grid(row=5,column=0,padx=1,pady=1)
@@ -89,13 +110,13 @@ def startWin():
     #fönster.mainloop()
 
 splash_screen = Tk()
-splash_screen.title("Logotype")
+splash_screen.title("LeAl Solutions")
 splash_screen.geometry("957x623")
 splash_img = PhotoImage(file="LeAl_logotyp.png", master=splash_screen)
 splash_label = Label(splash_screen, image=splash_img)
 splash_label.image = splash_img
 splash_label.pack()
-# splash_screen.after(3000, splash_screen_stäng)    Timer för splashscreen
+splash_screen.after(4000, splash_screen_stäng)    #Timer för splashscreen
 splash_label.bind("<Button-1>", splash_screen_stäng)
 splash_screen.bind("<Button-1>", splash_screen_stäng)
 splash_screen.mainloop()
