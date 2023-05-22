@@ -44,7 +44,7 @@ def getWordClass():
         klass = "Adverb"
     else:
         klass = "satellite word, not yet implemented"
-        
+
     fönster.resultat.config(text="Word class: " + klass)
 
 def splash_screen_stäng(event=None):
@@ -76,6 +76,9 @@ def startWin():
     knapp3 = Button(l_frame, text="Get autonyms", command=getAutonyms)
     knapp3.config(bg="skyblue", fg="blue", font=knapp_font, activebackground="gold")
     knapp3.grid(row=4,column=1,padx=10,pady=10)
+    knapp4 = Button(l_frame, text="Get class", command=getWordClass)
+    knapp4.config(bg="skyblue", fg="blue", font=knapp_font, activebackground="gold")
+    knapp4.grid(row=4,column=3,padx=10,pady=10)
     bd_frame = Frame(fönster,width=180,height=250, bg="black",bd=1)
     bd_frame.grid(row=5,column=0,padx=10,pady=5)
     frame_res = Frame(bd_frame, width=180,height=250,bg="white",bd=5)
