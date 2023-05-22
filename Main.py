@@ -25,8 +25,8 @@ def getAutonyms():
     synonymer = wordnet.synsets(ord)
     for syn in synonymer:
         for lemma in syn.lemmas():
-            if lemma.autonyms() and lemma.autonyms()[0].name == ord:
-                autonymer.append(lemma.name())
+            if lemma.antonyms():
+                autonymer.append(lemma.antonyms()[0].name())
     fönster.resultat.config(text="Autonyms: " + ", ".join(autonymer))
 
 def splash_screen_stäng(event=None):
@@ -55,6 +55,9 @@ def startWin():
     knapp2 = Button(l_frame, text="Get definition", command=getDefinition)
     knapp2.config(bg="skyblue", fg="blue", font=knapp_font, activebackground="gold")
     knapp2.grid(row=3,column=3,padx=10,pady=10)
+    knapp3 = Button(l_frame, text="Get autonyms", command=getAutonyms)
+    knapp3.config(bg="skyblue", fg="blue", font=knapp_font, activebackground="gold")
+    knapp3.grid(row=4,column=1,padx=10,pady=10)
     bd_frame = Frame(fönster,width=180,height=250, bg="black",bd=1)
     bd_frame.grid(row=5,column=0,padx=10,pady=5)
     frame_res = Frame(bd_frame, width=180,height=250,bg="white",bd=5)
