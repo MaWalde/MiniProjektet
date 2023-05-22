@@ -29,6 +29,24 @@ def getAutonyms():
                 autonymer.append(lemma.antonyms()[0].name())
     fönster.resultat.config(text="Autonyms: " + ", ".join(autonymer))
 
+def getWordClass():
+    ord = fönster.intext.get()
+    synset = wordnet.synsets(ord)
+    for syn in synset:
+        klass = syn.pos()
+    if klass == "n":
+        klass = "Substantive"
+    elif klass == "v":
+        klass = "Verb"
+    elif klass == "a":
+        klass = "Adjective"
+    elif klass == "r":
+        klass = "Adverb"
+    else:
+        klass = "satellite word, not yet implemented"
+        
+    fönster.resultat.config(text="Word class: " + klass)
+
 def splash_screen_stäng(event=None):
     splash_screen.destroy()
     startWin()
