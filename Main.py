@@ -1,7 +1,7 @@
 import nltk_setup
-from nltk.corpus import wordnet
 from tkinter import *
 from tkinter import font
+from nltk.corpus import wordnet
 
 def getSynonyms():
     ord = fönster.intext.get()
@@ -68,8 +68,20 @@ def getWordClass():
             klass = "Unknown"            
     fönster.resultat.config(text="Word class: " + klass)
 
+def splash_2(event=None):
+    global titelbild
+    titelbild = Tk()
+    titelbild.title("Mattias fantasticly spectacular english encyclopedia")
+    titelbild.geometry("957x623")
+    titel_img = PhotoImage(file="Programnamn.png", master=titelbild)
+    titel_label = Label(titelbild, image=titel_img)
+    titel_label.image = titel_img
+    titel_label.pack()
+    titelbild.after(4000, splash_screen_stäng)    #Timer för splashscreen
+
 def splash_screen_stäng(event=None):
     splash_screen.destroy()
+    titelbild.destroy()
     startWin()
 
 def startWin():
@@ -104,7 +116,7 @@ def startWin():
     bd_frame.grid(row=5,column=0,padx=10,pady=5)
     frame_res = Frame(bd_frame, width=180,height=250,bg="white",bd=5)
     frame_res.grid(row=5,column=0,padx=1,pady=1)
-    fönster.resultat = Label(frame_res, text=" ")
+    fönster.resultat = Label(frame_res, text=" ", wraplength=300, justify="left")
     fönster.resultat.config(bg="skyblue", fg="blue", font=knapp_font)
     fönster.resultat.grid(row=1,column=0,padx=10,pady=10)
     #fönster.mainloop()
@@ -116,7 +128,5 @@ splash_img = PhotoImage(file="LeAl_logotyp.png", master=splash_screen)
 splash_label = Label(splash_screen, image=splash_img)
 splash_label.image = splash_img
 splash_label.pack()
-splash_screen.after(4000, splash_screen_stäng)    #Timer för splashscreen
-splash_label.bind("<Button-1>", splash_screen_stäng)
-splash_screen.bind("<Button-1>", splash_screen_stäng)
+splash_screen.after(4000, splash_2)    #Timer för splashscreen
 splash_screen.mainloop()
