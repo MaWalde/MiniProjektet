@@ -24,12 +24,12 @@ def getDefinition():
 
 def getAutonyms():
     ord = fönster.intext.get()
-    autonymer = []
+    autonymer = set()
     synonymer = wordnet.synsets(ord)
     for syn in synonymer:
         for lemma in syn.lemmas():
             if lemma.antonyms():
-                autonymer.append(lemma.antonyms()[0].name())
+                autonymer.add(lemma.antonyms()[0].name())
     autonymer = [autonym.replace('_', ' ') for autonym in autonymer]
     fönster.resultat.config(text="Autonyms: " + ", ".join(autonymer))
     showResFrame()
