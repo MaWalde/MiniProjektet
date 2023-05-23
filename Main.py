@@ -75,7 +75,6 @@ def getWordClass():
 
 def showResFrame():
     bd_frame.grid()
-    frame_res.grid()
 
 def splash_2(event=None):
     global titelbild
@@ -96,7 +95,6 @@ def splash_screen_stäng(event=None):
 def startWin():
     global fönster
     global bd_frame
-    global frame_res
     fönster = Tk()
     fönster.title("Mattias fantasticly spectacular english encyclopedia")
     fönster.maxsize(800,500)
@@ -123,15 +121,12 @@ def startWin():
     knapp4 = Button(l_frame, text="Get class", command=getWordClass)
     knapp4.config(bg="skyblue", fg="blue", font=knapp_font, activebackground="gold")
     knapp4.grid(row=4,column=3,padx=10,pady=10)
-    bd_frame = Frame(fönster,width=180,height=250, bg="white",bd=1)
+    bd_frame = Frame(fönster,width=180,height=250, bg="white",bd=5)
     bd_frame.grid(row=5,column=0,padx=10,pady=5)
-    frame_res = Frame(bd_frame, width=180,height=250,bg="white",bd=5)
-    frame_res.grid(row=5,column=0,padx=1,pady=1)
-    fönster.resultat = Label(frame_res, text=" ", wraplength=300, justify="left")
+    fönster.resultat = Label(bd_frame, text=" ", wraplength=300, justify="left")
     fönster.resultat.config(bg="skyblue", fg="blue", font=knapp_font)
     fönster.resultat.grid(row=1,column=0,padx=10,pady=10)
     bd_frame.grid_forget()
-    frame_res.grid_forget()
     #fönster.mainloop()
 
 splash_screen = Tk()
