@@ -10,6 +10,7 @@ def getSynonyms():
         for lemma in syn.lemmas():
             synonymer.append(lemma.name())
     fönster.resultat.config(text="Synonyms: " + ", ".join(synonymer))
+    showResFrame()
 
 def getDefinition():
     ord = fönster.intext.get()
@@ -18,6 +19,7 @@ def getDefinition():
         fönster.resultat.config(text="Definition: " + definition[0].definition())
     else:
         fönster.resultat.config(text="Can not find a definition for the given word.")
+    showResFrame()
 
 def getAutonyms():
     ord = fönster.intext.get()
@@ -28,6 +30,8 @@ def getAutonyms():
             if lemma.antonyms():
                 autonymer.append(lemma.antonyms()[0].name())
     fönster.resultat.config(text="Autonyms: " + ", ".join(autonymer))
+    showResFrame()
+
 
 def getWordClass():
     ord = fönster.intext.get()
@@ -67,6 +71,11 @@ def getWordClass():
         else:
             klass = "Unknown"            
     fönster.resultat.config(text="Word class: " + klass)
+    showResFrame()
+
+def showResFrame():
+    bd_frame.grid()
+    frame_res.grid()
 
 def splash_2(event=None):
     global titelbild
@@ -86,6 +95,8 @@ def splash_screen_stäng(event=None):
 
 def startWin():
     global fönster
+    global bd_frame
+    global frame_res
     fönster = Tk()
     fönster.title("Mattias fantasticly spectacular english encyclopedia")
     fönster.maxsize(800,500)
@@ -119,6 +130,8 @@ def startWin():
     fönster.resultat = Label(frame_res, text=" ", wraplength=300, justify="left")
     fönster.resultat.config(bg="skyblue", fg="blue", font=knapp_font)
     fönster.resultat.grid(row=1,column=0,padx=10,pady=10)
+    bd_frame.grid_forget()
+    frame_res.grid_forget()
     #fönster.mainloop()
 
 splash_screen = Tk()
