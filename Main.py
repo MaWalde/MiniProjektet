@@ -9,6 +9,7 @@ def getSynonyms():
     for syn in wordnet.synsets(ord):
         for lemma in syn.lemmas():
             synonymer.append(lemma.name())
+    synonymer = [synonym.replace('_', ' ') for synonym in synonymer]
     fönster.resultat.config(text="Synonyms: " + ", ".join(synonymer))
     showResFrame()
 
@@ -29,6 +30,7 @@ def getAutonyms():
         for lemma in syn.lemmas():
             if lemma.antonyms():
                 autonymer.append(lemma.antonyms()[0].name())
+    autonymer = [autonym.replace('_', ' ') for autonym in autonymer]
     fönster.resultat.config(text="Autonyms: " + ", ".join(autonymer))
     showResFrame()
 
