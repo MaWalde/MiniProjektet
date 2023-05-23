@@ -5,10 +5,10 @@ from nltk.corpus import wordnet
 
 def getSynonyms():
     ord = fönster.intext.get()
-    synonymer = []
+    synonymer = set()
     for syn in wordnet.synsets(ord):
         for lemma in syn.lemmas():
-            synonymer.append(lemma.name())
+            synonymer.add(lemma.name())
     synonymer = [synonym.replace('_', ' ') for synonym in synonymer]
     fönster.resultat.config(text="Synonyms: " + ", ".join(synonymer))
     showResFrame()
@@ -33,7 +33,6 @@ def getAutonyms():
     autonymer = [autonym.replace('_', ' ') for autonym in autonymer]
     fönster.resultat.config(text="Autonyms: " + ", ".join(autonymer))
     showResFrame()
-
 
 def getWordClass():
     ord = fönster.intext.get()
