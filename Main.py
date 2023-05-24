@@ -79,6 +79,18 @@ def showResFrame():
     bd_frame.grid()
     bot_frame.grid()
 
+def splash():
+    global splash_screen
+    splash_screen = Tk()
+    splash_screen.title("LeAl Solutions")
+    splash_screen.geometry("957x623")
+    splash_img = PhotoImage(file="LeAl_logotyp.png", master=splash_screen)
+    splash_label = Label(splash_screen, image=splash_img)
+    splash_label.image = splash_img
+    splash_label.pack()
+    splash_screen.after(4000, splash_2)    #Timer för splashscreen
+    splash_screen.mainloop()
+
 def splash_2():
     global titelbild
     titelbild = Tk()
@@ -135,17 +147,5 @@ def startWin():
     bd_frame.grid_forget()
     bot_frame.grid_forget()
     #fönster.mainloop()
-
-def splash():
-    global splash_screen
-    splash_screen = Tk()
-    splash_screen.title("LeAl Solutions")
-    splash_screen.geometry("957x623")
-    splash_img = PhotoImage(file="LeAl_logotyp.png", master=splash_screen)
-    splash_label = Label(splash_screen, image=splash_img)
-    splash_label.image = splash_img
-    splash_label.pack()
-    splash_screen.after(4000, splash_2)    #Timer för splashscreen
-    splash_screen.mainloop()
 
 splash()
