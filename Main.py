@@ -79,7 +79,7 @@ def showResFrame():
     bd_frame.grid()
     bot_frame.grid()
 
-def splash_2(event=None):
+def splash_2():
     global titelbild
     titelbild = Tk()
     titelbild.title("Mattias fantasticly spectacular english encyclopedia")
@@ -91,7 +91,7 @@ def splash_2(event=None):
     splash_screen.destroy()
     titelbild.after(4000, splash_screen_stäng)    #Timer för splashscreen
 
-def splash_screen_stäng(event=None):
+def splash_screen_stäng():
     titelbild.destroy()
     startWin()
 
@@ -136,7 +136,7 @@ def startWin():
     bot_frame.grid_forget()
     #fönster.mainloop()
 
-def splash(event=None):
+def splash():
     global splash_screen
     splash_screen = Tk()
     splash_screen.title("LeAl Solutions")
