@@ -1,4 +1,4 @@
-import nltk_setup  
+from nltk_setup import setup
 from tkinter import *
 from tkinter import font
 from nltk.corpus import wordnet
@@ -147,4 +147,5 @@ def startWin(): #Huvudfönstret som lirar mot samtliga funktioner
     bd_frame.grid_forget()
     bot_frame.grid_forget()
 
+setup()
 splash()
