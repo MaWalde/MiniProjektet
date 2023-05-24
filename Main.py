@@ -1,9 +1,9 @@
-import nltk_setup
+import nltk_setup  
 from tkinter import *
 from tkinter import font
 from nltk.corpus import wordnet
 
-def getSynonyms():
+def getSynonyms():  #Funktion för att hämta synonymer till inmatat ord
     ord = fönster.intext.get()
     synonymer = set()
     for syn in wordnet.synsets(ord):
@@ -13,7 +13,7 @@ def getSynonyms():
     fönster.resultat.config(text="Synonyms: " + ", ".join(synonymer))
     showResFrame()
 
-def getDefinition():
+def getDefinition():  #Funktion för att hämta definitionen för inmatat ord
     ord = fönster.intext.get()
     definition = wordnet.synsets(ord)
     if definition:
@@ -22,7 +22,7 @@ def getDefinition():
         fönster.resultat.config(text="Can not find a definition for the given word.")
     showResFrame()
 
-def getAutonyms():
+def getAutonyms():  #Funktion för att hämta autonymer till inmatat ord
     ord = fönster.intext.get()
     autonymer = set()
     synonymer = wordnet.synsets(ord)
@@ -34,7 +34,7 @@ def getAutonyms():
     fönster.resultat.config(text="Autonyms: " + ", ".join(autonymer))
     showResFrame()
 
-def getWordClass():
+def getWordClass():  #Funktion för att bestämma ordklarr för inmatat ord
     ord = fönster.intext.get()
     synset = wordnet.synsets(ord)
     klass = NONE
@@ -75,11 +75,11 @@ def getWordClass():
     fönster.resultat.config(text="Word class: " + klass)
     showResFrame()
 
-def showResFrame():
+def showResFrame(): #Öppnar gömt resultatfönster med nedre ram när användaren skickar begäran
     bd_frame.grid()
     bot_frame.grid()
 
-def splash():
+def splash(): #Startskärm som laddar en fiktionell företagslogotyp
     global splash_screen
     splash_screen = Tk()
     splash_screen.title("LeAl Solutions")
@@ -91,7 +91,7 @@ def splash():
     splash_screen.after(4000, splash_2)    #Timer för splashscreen
     splash_screen.mainloop()
 
-def splash_2():
+def splash_2(): #Startskärm nr.2 som stänger föregående bild och laddar programmets egen logotyp 
     global titelbild
     titelbild = Tk()
     titelbild.title("Mattias fantasticly spectacular english encyclopedia")
@@ -103,18 +103,18 @@ def splash_2():
     splash_screen.destroy()
     titelbild.after(4000, splash_screen_stäng)    #Timer för splashscreen
 
-def splash_screen_stäng():
+def splash_screen_stäng(): #Stänger andra bilden och startar själva huvudprogrammet i eget fönster
     titelbild.destroy()
     startWin()
 
-def startWin():
+def startWin(): #Huvudfönstret som lirar mot samtliga funktioner
     global fönster
     global bd_frame
     global bot_frame
     fönster = Tk()
     fönster.title("Mattias fantasticly spectacular english encyclopedia")
     fönster.maxsize(800,500)
-    fönster.config(bg="skyblue") #Prototyp bg-färg
+    fönster.config(bg="skyblue")
     l_frame = Frame(fönster, width=200, height=480, bg="white", bd = 13)
     l_frame.grid(row=1,column=0, padx=20,pady=20)
     etikett = Label(l_frame, text="Enter a word:")
@@ -146,6 +146,5 @@ def startWin():
     fönster.resultat.grid(row=1,column=0,padx=10,pady=10)
     bd_frame.grid_forget()
     bot_frame.grid_forget()
-    #fönster.mainloop()
 
 splash()
